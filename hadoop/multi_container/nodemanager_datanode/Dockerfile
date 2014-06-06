@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:rawhide
 MAINTAINER scollier <emailscottcollier@gmail.com>
 
 # Update the container
@@ -13,6 +13,9 @@ RUN yum -y install net-tools lsof nmap
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./core-site.xml /etc/hadoop/
 ADD ./yarn-site.xml /etc/hadoop/
+
+# asm 3/5 conflict.  Resolve for now but removing asm3 from the classpath
+RUN rm -f /usr/share/hadoop/common/lib/asm-3.2.jar
 
 # Only ports shown: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/bk_using_Ambari_book/content/reference_chap2_1_2x.html
 # Datanode Ports

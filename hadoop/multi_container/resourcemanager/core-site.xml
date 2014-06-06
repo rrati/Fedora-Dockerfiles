@@ -20,7 +20,7 @@
 <configuration>
   <property>
     <name>fs.default.name</name>
-    <value>hdfs://namenode:8020</value>
+    <value>hdfs://localhost:8020</value>
   </property>
 
   <!-- HTTPFS proxy user setting -->

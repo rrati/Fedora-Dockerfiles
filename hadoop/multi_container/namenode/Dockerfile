@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:rawhide
 MAINTAINER scollier <emailscottcollier@gmail.com>
 
 # Update the container
@@ -12,6 +12,7 @@ RUN yum -y install net-tools lsof nmap
 
 ADD ./hdfs-create-dirs /usr/sbin/hdfs-create-dirs
 ADD ./core-site.xml /etc/hadoop/
+ADD ./hdfs-site.xml /etc/hadoop/
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./start-hadoop-namenode /usr/sbin/start-hadoop-namenode
 

@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:rawhide
 MAINTAINER scollier <emailscottcollier@gmail.com>
 
 # Update the container
@@ -12,6 +12,9 @@ RUN yum -y install net-tools lsof nmap
 
 ADD ./core-site.xml /etc/hadoop/
 ADD ./supervisord.conf /etc/supervisord.conf
+
+# asm 3/5 conflict.  Resolve for now but removing asm3 from the classpath
+RUN rm -f /usr/share/hadoop/common/lib/asm-3.2.jar
 
 # These only expose what was given in: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/bk_using_Ambari_book/content/reference_chap2_2a_2x.html
 EXPOSE 8025 8141 8050 8030 8032 8088 8090 8031 8033 

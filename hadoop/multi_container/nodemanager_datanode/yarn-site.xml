@@ -75,6 +75,6 @@
 
   <property>
      <name>yarn.resourcemanager.hostname</name>
-     <value>resourcemgr</value>
+     <value>localhost</value>
   </property>
 </configuration>
